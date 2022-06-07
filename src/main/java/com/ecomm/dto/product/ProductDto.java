@@ -10,20 +10,18 @@ public class ProductDto {
 
     private int quantity;
 
-    private long userId;
-
     private String productImage;
-
+    private long userId;
     public ProductDto() {
     }
 
-    public ProductDto(String productName, double price, String productDescription, int quantity, long userId, String productImage) {
+    public ProductDto(String productName, double price, String productDescription, int quantity, String productImage, long userId) {
         this.productName = productName;
         this.price = price;
         this.productDescription = productDescription;
         this.quantity = quantity;
-        this.userId = userId;
         this.productImage = productImage;
+        this.userId = userId;
     }
 
     public String getProductName() {

@@ -1,6 +1,7 @@
 package com.ecomm.services;
 
 
+import com.ecomm.dto.product.ProductDto;
 import com.ecomm.models.Product;
 
 import java.util.List;
@@ -11,6 +12,6 @@ public interface ProductService {
 
     List<Product> getAllProduct();
     Optional<Product> findByProductById(long productId);
-    void saveProduct(Product product);
+    void saveProduct(ProductDto productDto);
     void deleteProductById(long productId);
 }

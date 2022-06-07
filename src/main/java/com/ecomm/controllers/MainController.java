@@ -3,6 +3,8 @@ package com.ecomm.controllers;
 import com.ecomm.dto.order.OrderDto;
 import com.ecomm.dto.product.ProductDto;
 import com.ecomm.dto.review.ReviewDto;
+import com.ecomm.services.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +13,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/miu")
 public class MainController {
+
+    @Autowired
+    private ProductService productService;
 
     //All public contents go here
     @GetMapping("/all")
@@ -51,8 +56,10 @@ public class MainController {
     @PostMapping("/seller/addproduct")
     @PreAuthorize("hasRole('SELLER')")
     public ResponseEntity<?> addProduct(@RequestBody ProductDto productDto){
+        productService.saveProduct(productDto);
         return null;
     }
+
 
 
     @PostMapping("/seller/orders")
