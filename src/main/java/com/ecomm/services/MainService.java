@@ -10,5 +10,5 @@ public interface MainService {
 
     ResponseEntity<MessageResponse> registerNewUser(SignupRequest signupRequest);
 
-    public ResponseEntity<?> authenticateUser(LoginRequest loginRequest);
+    ResponseEntity<?> authenticateUser(LoginRequest loginRequest);
 }
