@@ -13,19 +13,12 @@ public class Review implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Rating rating;
-
     private String comment;
 
-    @Column(name = "is_approved")
     private boolean isApproved;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id", nullable = false)
-    @JsonBackReference
-    private Product product;
+    private long userId;
+
+    private long productId;
 }

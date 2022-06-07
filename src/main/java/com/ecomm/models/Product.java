@@ -15,26 +15,20 @@ public class Product implements Serializable {
     private long id;
 
     @Column(length = 50, nullable = false)
-    private String name;
+    private String productName;
 
     @Column(nullable = false)
     private double price;
 
     @Column(nullable = false, length = 100000)
-    private String description;
+    private String productDescription;
 
     @Column(nullable = false)
     private int quantity;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private long userId;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "product")
-    @JsonManagedReference
-    private Set<Image> images;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "product")
-    @JsonManagedReference
-    private Set<Review> reviews;
+    private String productImage;
+
 }
