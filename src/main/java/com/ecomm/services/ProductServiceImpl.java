@@ -12,25 +12,31 @@ import java.util.Optional;
 public class ProductServiceImpl implements ProductService{
 
     @Autowired
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
 
     @Override
     public List<Product> getAllProduct() {
-        return productRepository.findAll();
+
+//        return productRepository.getAllProduct();
+        return null;
     }
 
     @Override
     public Optional<Product> findByProductById(long productId) {
-        return productRepository.findById(productId);
+//        return productRepository.findByProductById(productId);
+        return null;
     }
 
     @Override
-    public void saveProduct(Product product) {
+    public void saveProduct(ProductDto productDto) {
+        Product product = new Product(productDto.getProductName(), productDto.getPrice(), productDto.getProductDescription(),
+                            productDto.getQuantity(), productDto.getProductImage(), productDto.getUserId());
         productRepository.save(product);
     }
 
     @Override
     public void deleteProductById(long productId) {
-        productRepository.deleteById(productId);
+
+//        productRepository.deleteProductById(productId);
     }
 }
