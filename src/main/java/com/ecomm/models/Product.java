@@ -1,9 +1,12 @@
 package com.ecomm.models;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -29,6 +32,11 @@ public class Product implements Serializable {
     private String productImage;
 
     private long userId;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_id")
+    @Fetch(FetchMode.SUBSELECT)
+    private List<Review> reviews;
 
 
     public Product() {

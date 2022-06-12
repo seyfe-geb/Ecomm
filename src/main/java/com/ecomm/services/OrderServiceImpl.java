@@ -28,7 +28,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void saveOrder(OrderDto orderDto) {
-        Order order = new Order(orderDto.getPrice(), orderDto.getProductId(), orderDto.getUserId(), LocalDate.now(), LocalDate.now());
+        Order order = new Order(orderDto.getPrice(), orderDto.getQuantity(), orderDto.getProductId(), orderDto.getUserId(), LocalDate.now(), LocalDate.now());
         orderRepository.save(order);
     }
 

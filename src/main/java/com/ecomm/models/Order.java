@@ -1,16 +1,8 @@
 package com.ecomm.models;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GenerationTime;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.Set;
 
 @Entity
 @Table(name = "orders")
@@ -23,6 +15,8 @@ public class Order implements Serializable {
     @Column(nullable = false)
     private double price;
 
+    private int quantity;
+
     private long productId;
 
     private long userId;
@@ -34,8 +28,9 @@ public class Order implements Serializable {
     public Order() {
     }
 
-    public Order(double price, long productId, long userId, LocalDate createdAt, LocalDate modifiedAt) {
+    public Order(double price, int quantity, long productId, long userId, LocalDate createdAt, LocalDate modifiedAt) {
         this.price = price;
+        this.quantity = quantity;
         this.productId = productId;
         this.userId = userId;
         this.createdAt = createdAt;
@@ -88,5 +83,13 @@ public class Order implements Serializable {
 
     public void setModifiedAt(LocalDate modifiedAt) {
         this.modifiedAt = modifiedAt;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int amount) {
+        this.quantity = amount;
     }
 }

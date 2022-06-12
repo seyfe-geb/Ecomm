@@ -15,10 +15,60 @@ public class Review implements Serializable {
 
     private String comment;
 
+    private int stars;
+
     private boolean isApproved;
 
 
     private long userId;
 
-    private long productId;
+    public Review() {
+    }
+
+    public Review(String comment, int stars, boolean isApproved, long userId) {
+        this.comment = comment;
+        this.stars = stars;
+        this.isApproved = isApproved;
+        this.userId = userId;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public int getStars() {
+        return stars;
+    }
+
+    public void setStars(int stars) {
+        this.stars = stars;
+    }
+
+    public boolean isApproved() {
+        return isApproved;
+    }
+
+    public void setApproved(boolean approved) {
+        isApproved = approved;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
 }
