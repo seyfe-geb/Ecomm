@@ -1,4 +1,4 @@
-package com.ecomm.repository;
+package com.ecomm.dto.product.repository;
 
 import com.ecomm.models.Review;
 import org.springframework.data.jpa.repository.JpaRepository;

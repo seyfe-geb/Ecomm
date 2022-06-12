@@ -79,6 +79,11 @@ public class MainController {
         return null;
     }
 
+    @GetMapping("/seller/products/{id}")
+    @PreAuthorize("hasRole('SELLER')")
+    public ProductDto getProductsBySellerId(@PathVariable("id") long id) {
+        return productService.getProductById(id);
+    }
 
 
     @PostMapping("/seller/orders")

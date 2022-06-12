@@ -2,7 +2,7 @@ package com.ecomm.services;
 
 
 import com.ecomm.models.User;
-import com.ecomm.repository.UserRepository;
+import com.ecomm.dto.product.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

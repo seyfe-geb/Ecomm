@@ -2,7 +2,7 @@ package com.ecomm.services;
 
 import com.ecomm.dto.product.ProductDto;
 import com.ecomm.models.Product;
-import com.ecomm.repository.ProductRepository;
+import com.ecomm.dto.product.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
