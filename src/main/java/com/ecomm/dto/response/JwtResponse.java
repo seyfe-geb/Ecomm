@@ -1,5 +1,6 @@
 package com.ecomm.dto.response;
 
+import javax.persistence.Column;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -22,17 +23,36 @@ public class JwtResponse {
 
     private LocalDate modifiedAt;
 
+    @Column(nullable = false)
+    private String street;
+
+    @Column(nullable = false)
+    private String city;
+
+    private String state;
+
+    private String zipcode;
+
+    @Column(nullable = false)
+    private String cardName;
+
+    @Column(nullable = false)
+    private String cardType;
+
+    @Column(nullable = false, unique = true)
+    private String cardNumber;
+
+    @Column(nullable = false)
+    private String cardCVV;
     private String accessToken;
-    private String tokenType;
 
     public JwtResponse() {
     }
 
-    public JwtResponse(Long id, String firstName, String lastName,
-                       String username, String email, List<String> roles,
-                       boolean enabled, boolean approvedSeller,
-                       LocalDate createdAt, LocalDate modifiedAt,
-                       String accessToken, String tokenType) {
+    public JwtResponse(Long id, String firstName, String lastName, String username, String email, List<String> roles,
+                       boolean enabled, boolean approvedSeller, LocalDate createdAt, LocalDate modifiedAt,
+                       String street, String city, String state, String zipcode,
+                       String cardName, String cardType, String cardNumber, String cardCVV, String accessToken) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -43,8 +63,15 @@ public class JwtResponse {
         this.approvedSeller = approvedSeller;
         this.createdAt = createdAt;
         this.modifiedAt = modifiedAt;
+        this.street = street;
+        this.city = city;
+        this.state = state;
+        this.zipcode = zipcode;
+        this.cardName = cardName;
+        this.cardType = cardType;
+        this.cardNumber = cardNumber;
+        this.cardCVV = cardCVV;
         this.accessToken = accessToken;
-        this.tokenType = tokenType;
     }
 
     public Long getId() {
@@ -135,11 +162,67 @@ public class JwtResponse {
         this.accessToken = accessToken;
     }
 
-    public String getTokenType() {
-        return tokenType;
+    public String getStreet() {
+        return street;
     }
 
-    public void setTokenType(String tokenType) {
-        this.tokenType = tokenType;
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public String getCardName() {
+        return cardName;
+    }
+
+    public void setCardName(String cardName) {
+        this.cardName = cardName;
+    }
+
+    public String getCardType() {
+        return cardType;
+    }
+
+    public void setCardType(String cardType) {
+        this.cardType = cardType;
+    }
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public String getCardCVV() {
+        return cardCVV;
+    }
+
+    public void setCardCVV(String cardCVV) {
+        this.cardCVV = cardCVV;
     }
 }

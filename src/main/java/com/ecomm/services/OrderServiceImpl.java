@@ -1,10 +1,12 @@
 package com.ecomm.services;
 
+import com.ecomm.dto.order.OrderDto;
 import com.ecomm.models.Order;
 import com.ecomm.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,8 +27,9 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void saveOrder(Order order) {
-     orderRepository.save(order);
+    public void saveOrder(OrderDto orderDto) {
+        Order order = new Order(orderDto.getPrice(), orderDto.getProductId(), orderDto.getUserId(), LocalDate.now(), LocalDate.now());
+        orderRepository.save(order);
     }
 
     @Override

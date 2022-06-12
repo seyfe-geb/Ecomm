@@ -36,9 +36,24 @@ VALUES (false, '243', 'VISA', '12345682', 'CREDIT', 'Seattle', '2022-06-05', 'ad
 
 INSERT INTO user_roles (user_id, role_id) VALUES (3, 3);
 
+-- -- --PRODUCTS
 
--- --User 4
---
+INSERT INTO products (price, product_description, product_image, product_name, quantity, user_id)
+VALUES (100.00, 'It is a transport mechanism', 'https://www.financialexpress.com/wp-content/uploads/2021/06/world-bicycle-day-2021-hero-lectro-c5.jpg',
+        'Bicycle', 14, 2);
+
+INSERT INTO products (price, product_description, product_image, product_name, quantity, user_id)
+VALUES (0.50, 'Stationery writing object', 'https://m.media-amazon.com/images/I/71LbzzDezeL._AC_SY355_.jpg',
+        'Pen', 5, 2);
+
+INSERT INTO products (price, product_description, product_image, product_name, quantity, user_id)
+VALUES (60, 'Maximize your carry', 'https://m.media-amazon.com/images/I/81idlqFqcUL._AC_SL1500_.jpg',
+        'Bag', 11, 2);
+
+INSERT INTO products (price, product_description, product_image, product_name, quantity, user_id)
+VALUES (1100, 'Cellular phone', 'https://media.wired.com/photos/5d803f5dc891950008ce3447/master/pass/iphone-11_6175-Edit.jpg',
+        'IPhone', 57, 2);
+
 -- INSERT INTO users (id, created_at, email, enabled, fname, is_approved_seller, lname, modified_at, password, username)
 -- VALUES (4, '2022-04-15', 'essei@miu.com', 1, 'Esei', 0, 'Kahsay', '2022-04-15', '$2a$12$IKEQb00u5QpZMx4v5zMweu.3wrq0pS7XLCHO4yHZ.BW/yvWu1feo2', 'essei');
 --
@@ -120,33 +135,7 @@ INSERT INTO user_roles (user_id, role_id) VALUES (3, 3);
 -- -- values (5, 9, '567891', '2022-04-15', 'CREDIT', 5);
 -- --
 -- --
--- -- --PRODUCTS
--- INSERT INTO products (id, description, name, price, quantity, user_id )
--- VALUES (1, 'It is a transport mechanism', 'Bicycle', 100.00, 14, 1);
---
--- INSERT INTO products (id, description, name, price, quantity, user_id  )
--- VALUES (2, 'Stationery writing object', 'Pen', 0.50, 5, 2);
---
--- INSERT INTO products (id, description, name, price, quantity, user_id  )
--- VALUES (3, 'Maximize your carry', 'Bag',60, 5, 1);
---
--- INSERT INTO products (id, description, name, price, quantity, user_id  )
--- VALUES (4, ' cellular phone', 'iPhone', 1100, 5, 2);
---
---
--- --PRODUCT IMAGES
---
--- INSERT INTO product_images (id, image_uri, name, product_id)
--- VALUES (1, 'https://www.financialexpress.com/wp-content/uploads/2021/06/world-bicycle-day-2021-hero-lectro-c5.jpg', 'bicycle', 1);
---
--- INSERT INTO product_images (id, image_uri, name, product_id)
--- VALUES (2, 'https://m.media-amazon.com/images/I/71LbzzDezeL._AC_SY355_.jpg', 'pen', 2);
---
--- INSERT INTO product_images (id, image_uri, name, product_id)
--- VALUES (3, 'https://m.media-amazon.com/images/I/81idlqFqcUL._AC_SL1500_.jpg', 'bag', 3);
---
--- INSERT INTO product_images (id, image_uri, name, product_id)
--- VALUES (4, 'https://media.wired.com/photos/5d803f5dc891950008ce3447/master/pass/iphone-11_6175-Edit.jpg', 'iphone', 4)
+
 
 
 

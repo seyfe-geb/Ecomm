@@ -65,8 +65,15 @@ public class MainServiceImpl implements MainService{
                 user.isApprovedSeller(),
                 user.getCreatedAt(),
                 user.getModifiedAt(),
-                jwt,
-                "Bearer"));
+                user.getStreet(),
+                user.getCity(),
+                user.getState(),
+                user.getZipcode(),
+                user.getCardName(),
+                user.getCardType(),
+                user.getCardNumber(),
+                user.getCardCVV(),
+                jwt));
     }
 
     @Override

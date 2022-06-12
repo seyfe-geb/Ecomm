@@ -3,11 +3,14 @@ package com.ecomm.controllers;
 import com.ecomm.dto.order.OrderDto;
 import com.ecomm.dto.product.ProductDto;
 import com.ecomm.dto.review.ReviewDto;
+import com.ecomm.services.OrderService;
 import com.ecomm.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -17,10 +20,25 @@ public class MainController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private OrderService orderService;
+
     //All public contents go here
     @GetMapping("/all")
     public String allAccess() {
         return "Public Content.";
+    }
+
+    @GetMapping("/product/{pid}")
+    public ProductDto getProductById(@PathVariable("pid")Long pid) {
+
+        return productService.getProductById(pid);
+    }
+
+    @GetMapping("/products")
+    public List<ProductDto> getAllProducts() {
+
+        return productService.getAllProducts();
     }
 
 
@@ -34,6 +52,7 @@ public class MainController {
     @PostMapping("/buyer/neworder")
     @PreAuthorize("hasRole('BUYER')")
     public ResponseEntity<?> newOrder(@RequestBody OrderDto orderDto){
+        orderService.saveOrder(orderDto);
         return null;
     }
 

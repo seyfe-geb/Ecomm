@@ -6,6 +6,7 @@ import com.ecomm.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,5 +40,26 @@ public class ProductServiceImpl implements ProductService{
     public void deleteProductById(long productId) {
 
 //        productRepository.deleteProductById(productId);
+    }
+
+    @Override
+    public ProductDto getProductById(Long pid) {
+        Product product = productRepository.findById(pid).orElse(null);
+        ProductDto productDto = new ProductDto(product.getId(), product.getProductName(), product.getPrice(),
+                                                product.getProductDescription(), product.getQuantity(), product.getProductImage(),
+                                                product.getUserId());
+        return productDto;
+    }
+
+    @Override
+    public List<ProductDto> getAllProducts() {
+        List<Product> products = productRepository.findAll();
+        List<ProductDto> productDtos = new ArrayList<>();
+        for(Product product : products){
+            productDtos.add(new ProductDto(product.getId(), product.getProductName(), product.getPrice(),
+                    product.getProductDescription(), product.getQuantity(), product.getProductImage(),
+                    product.getUserId()));
+        }
+        return productDtos;
     }
 }

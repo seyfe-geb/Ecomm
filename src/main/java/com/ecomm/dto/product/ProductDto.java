@@ -2,6 +2,8 @@ package com.ecomm.dto.product;
 
 
 public class ProductDto {
+
+    private long id;
     private String productName;
 
     private double price;
@@ -15,13 +17,22 @@ public class ProductDto {
     public ProductDto() {
     }
 
-    public ProductDto(String productName, double price, String productDescription, int quantity, String productImage, long userId) {
+    public ProductDto(long id, String productName, double price, String productDescription, int quantity, String productImage, long userId) {
+        this.id = id;
         this.productName = productName;
         this.price = price;
         this.productDescription = productDescription;
         this.quantity = quantity;
         this.productImage = productImage;
         this.userId = userId;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getProductName() {

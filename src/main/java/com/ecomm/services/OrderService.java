@@ -1,5 +1,6 @@
 package com.ecomm.services;
 
+import com.ecomm.dto.order.OrderDto;
 import com.ecomm.models.Order;
 
 import java.util.List;
@@ -9,7 +10,7 @@ public interface OrderService {
 
     List<Order> getAllOrder();
     Optional<Order> findByOrderById(long orderId);
-    void saveOrder(Order order);
+    void saveOrder(OrderDto orderdto);
     void deleteOrderById(long orderId);
 
 }
