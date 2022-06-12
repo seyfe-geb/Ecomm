@@ -2,7 +2,7 @@ package com.ecomm.services;
 
 import com.ecomm.dto.product.ProductDto;
 import com.ecomm.models.Product;
-import com.ecomm.dto.product.repository.ProductRepository;
+import com.ecomm.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,6 +49,18 @@ public class ProductServiceImpl implements ProductService{
                                                 product.getProductDescription(), product.getQuantity(), product.getProductImage(),
                                                 product.getUserId());
         return productDto;
+    }
+
+    @Override
+    public List<ProductDto> getProductBySellerId(Long uid) {
+        List<Product> products = productRepository.findProductByUserId(uid);
+        List<ProductDto> productDtos = new ArrayList<>();
+        for(Product product : products){
+            productDtos.add(new ProductDto(product.getId(), product.getProductName(), product.getPrice(),
+                    product.getProductDescription(), product.getQuantity(), product.getProductImage(),
+                    product.getUserId()));
+        }
+        return productDtos;
     }
 
     @Override

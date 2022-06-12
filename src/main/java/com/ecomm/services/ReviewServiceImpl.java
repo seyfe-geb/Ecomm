@@ -1,7 +1,7 @@
 package com.ecomm.services;
 
 import com.ecomm.models.Review;
-import com.ecomm.dto.product.repository.ReviewRepository;
+import com.ecomm.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

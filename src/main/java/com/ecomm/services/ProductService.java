@@ -17,5 +17,7 @@ public interface ProductService {
 
     ProductDto getProductById(Long pid);
 
+    List<ProductDto> getProductBySellerId(Long uid);
+
     List<ProductDto> getAllProducts();
 }

@@ -1,4 +1,4 @@
-package com.ecomm.dto.product.repository;
+package com.ecomm.repository;
 
 import com.ecomm.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;

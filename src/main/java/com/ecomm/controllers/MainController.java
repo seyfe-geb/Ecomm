@@ -81,8 +81,8 @@ public class MainController {
 
     @GetMapping("/seller/products/{id}")
     @PreAuthorize("hasRole('SELLER')")
-    public ProductDto getProductsBySellerId(@PathVariable("id") long id) {
-        return productService.getProductById(id);
+    public List<ProductDto> getProductsBySellerId(@PathVariable("id") long id) {
+        return productService.getProductBySellerId(id);
     }
 
 
