@@ -3,8 +3,12 @@ package com.ecomm.controllers;
 import com.ecomm.dto.order.OrderDto;
 import com.ecomm.dto.product.ProductDto;
 import com.ecomm.dto.review.ReviewDto;
+import com.ecomm.dto.user.UserDto;
+import com.ecomm.repository.UserRepository;
+import com.ecomm.services.MainService;
 import com.ecomm.services.OrderService;
 import com.ecomm.services.ProductService;
+import com.ecomm.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -22,6 +26,12 @@ public class MainController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private MainService mainService;
+
+    @Autowired
+    private UserService userService;
 
     //All public contents go here
     @GetMapping("/all")
@@ -112,6 +122,13 @@ public class MainController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> approveSeller(@PathVariable("id") long sellerId) {
 
+        return null;
+    }
+
+    @GetMapping("/sellers")
+    @PreAuthorize("hasRole('ADMIN')")
+    public List<UserDto> getAllSellers(){
+        userService.getAllSellers();
         return null;
     }
 }
