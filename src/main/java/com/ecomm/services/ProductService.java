@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface ProductService {
 
     List<Product> getAllProduct();
-    Optional<Product> findByProductById(long productId);
+    Optional<Product> findProductById(long productId);
     void saveProduct(ProductDto productDto);
     void deleteProductById(long productId);
 

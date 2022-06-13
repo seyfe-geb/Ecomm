@@ -31,7 +31,6 @@ public class MainController {
 
     @GetMapping("/product/{pid}")
     public ProductDto getProductById(@PathVariable("pid")Long pid) {
-
         return productService.getProductById(pid);
     }
 
@@ -85,6 +84,11 @@ public class MainController {
         return productService.getProductBySellerId(id);
     }
 
+    @GetMapping("/seller/orders/{id}")
+    @PreAuthorize("hasRole('SELLER')")
+    public List<OrderDto> getOrderedItemsFromSellerBySellerId(@PathVariable("id") long id) {
+        return orderService.findOrderByUserId(id);
+    }
 
     @PostMapping("/seller/orders")
     @PreAuthorize("hasRole('SELLER')")
