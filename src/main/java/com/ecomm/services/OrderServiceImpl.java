@@ -5,6 +5,7 @@ import com.ecomm.dto.product.ProductDto;
 import com.ecomm.models.Order;
 import com.ecomm.models.Product;
 import com.ecomm.repository.OrderRepository;
+import com.ecomm.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,9 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     OrderRepository orderRepository;
 
+    @Autowired
+    ProductRepository productRepository;
+
 
     @Override
     public List<OrderDto> findOrderByUserId(long userId) {
@@ -32,6 +36,34 @@ public class OrderServiceImpl implements OrderService {
         return orderDtos;
     }
 
+    @Override
+    public List<OrderDto> getOrdersBySellerId(Long sid) {
+        List<Product> products = productRepository.findProductByUserId(sid);
+        List<ProductDto> productDtos = new ArrayList<>();
+        for(Product product : products){
+            productDtos.add(new ProductDto(product.getId(), product.getProductName(), product.getPrice(),
+                    product.getProductDescription(), product.getQuantity(), product.getProductImage(),
+                    product.getUserId()));
+        }
+
+        List<OrderDto> orders = new ArrayList<>();
+        for (ProductDto p: productDtos){
+            List<Order> orders1 = orderRepository.findOrderByProductId(sid);
+        }
+        return null;
+    }
+
+    @Override
+    public List<OrderDto> getOrdersByProductId(Long pid) {
+        List<Order> orders = orderRepository.findOrderByProductId(pid);
+        List<OrderDto> orderDtos = new ArrayList<>();
+        for(Order order :orders){
+            orderDtos.add(new OrderDto(order.getPrice(),order.getQuantity(),
+                    order.getProductId(), order.getUserId()
+            ));
+        }
+        return orderDtos;
+    }
 
     @Override
     public List<Order> getAllOrder() {

@@ -1,6 +1,7 @@
 package com.ecomm.services;
 
 import com.ecomm.dto.order.OrderDto;
+import com.ecomm.dto.product.ProductDto;
 import com.ecomm.models.Order;
 
 import java.util.List;
@@ -13,5 +14,7 @@ public interface OrderService {
     void saveOrder(OrderDto orderdto);
     void deleteOrderById(long orderId);
     List<OrderDto> findOrderByUserId(long userId);
+    List<OrderDto> getOrdersBySellerId(Long sid);
+    List<OrderDto> getOrdersByProductId(Long pid);
 
 }

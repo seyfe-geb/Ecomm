@@ -1,6 +1,8 @@
 package com.ecomm.services;
 
+import com.ecomm.dto.order.OrderDto;
 import com.ecomm.dto.product.ProductDto;
+import com.ecomm.models.Order;
 import com.ecomm.models.Product;
 import com.ecomm.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +62,7 @@ public class ProductServiceImpl implements ProductService{
                     product.getProductDescription(), product.getQuantity(), product.getProductImage(),
                     product.getUserId()));
         }
+
         return productDtos;
     }
 
