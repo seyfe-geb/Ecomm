@@ -21,6 +21,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -94,9 +95,9 @@ public class MainServiceImpl implements MainService{
                 true, false,
                 LocalDate.now(), LocalDate.now(),
                 signUpRequest.getStreet(), signUpRequest.getCity(), signUpRequest.getState(), signUpRequest.getZipcode(),
-                signUpRequest.getCardName(), signUpRequest.getCardType(), signUpRequest.getCardNumber(), signUpRequest.getCardCVV(), new HashSet<Role>());
+                signUpRequest.getCardName(), signUpRequest.getCardType(), signUpRequest.getCardNumber(), signUpRequest.getCardCVV(), new ArrayList<Role>());
         String strRole = signUpRequest.getRole();
-        Set<Role> roles = new HashSet<>();
+        List<Role> roles = new ArrayList<>();
         if (strRole == null) {
             Role userRole = roleRepository.findByName(ERole.ROLE_BUYER)
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));

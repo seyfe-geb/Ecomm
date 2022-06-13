@@ -9,6 +9,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -76,7 +77,7 @@ public class User {
     @JoinTable(	name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles = new HashSet<>();
+    private List<Role> roles = new ArrayList<>();
 
 
     public User() {
@@ -88,7 +89,7 @@ public class User {
                 LocalDate createdAt, LocalDate modifiedAt,
                 String street, String city, String state, String zipcode,
                 String cardName, String cardType, String cardNumber, String cardCVV,
-                Set<Role> roles) {
+                List<Role> roles) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -133,10 +134,10 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    public Set<Role> getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
 

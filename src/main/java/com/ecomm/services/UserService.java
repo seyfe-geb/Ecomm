@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface UserService {
     List<UserDto> getAllSellers();
+
+    List<UserDto> getAllBuyers();
 }

@@ -132,7 +132,12 @@ public class MainController {
     @GetMapping("/sellers")
     @PreAuthorize("hasRole('ADMIN')")
     public List<UserDto> getAllSellers(){
-        userService.getAllSellers();
-        return null;
+        return userService.getAllSellers();
+    }
+
+    @GetMapping("/buyers")
+    @PreAuthorize("hasRole('ADMIN')")
+    public List<UserDto> getAllBuyers(){
+        return userService.getAllBuyers();
     }
 }
