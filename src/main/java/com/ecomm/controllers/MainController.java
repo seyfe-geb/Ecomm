@@ -3,6 +3,7 @@ package com.ecomm.controllers;
 import com.ecomm.dto.order.OrderDto;
 import com.ecomm.dto.product.ProductDto;
 import com.ecomm.dto.review.ReviewDto;
+import com.ecomm.dto.user.ApproveDto;
 import com.ecomm.dto.user.UserDto;
 import com.ecomm.repository.UserRepository;
 import com.ecomm.services.MainService;
@@ -145,5 +146,19 @@ public class MainController {
     @PreAuthorize("hasRole('ADMIN')")
     public List<UserDto> getAllBuyers(){
         return userService.getAllBuyers();
+    }
+
+    @GetMapping("/users/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public UserDto getUserById(@PathVariable("id")Long id){
+
+        return userService.getUserById(id);
+    }
+
+    @PutMapping("/users")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> updateUser(@RequestBody ApproveDto approveDto){
+        userService.updateUser(approveDto);
+        return null;
     }
 }

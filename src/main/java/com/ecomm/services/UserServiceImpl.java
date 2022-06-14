@@ -1,5 +1,6 @@
 package com.ecomm.services;
 
+import com.ecomm.dto.user.ApproveDto;
 import com.ecomm.dto.user.UserDto;
 import com.ecomm.models.ERole;
 import com.ecomm.models.Role;
@@ -8,6 +9,7 @@ import com.ecomm.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -133,5 +135,40 @@ public class UserServiceImpl implements UserService{
             ));
         }
         return returnSellers;
+    }
+
+    @Override
+    public UserDto getUserById(Long id) {
+        User user = userRepository.findById(id).orElse(null);
+        List<String> roles = user.getRoles().stream()
+                .map(r -> r.getName().toString())
+                .collect(Collectors.toList());
+        return new UserDto(
+                user.getId(),
+                user.getFirstName(),
+                user.getLastName(),
+                user.getUsername(),
+                user.getEmail(),
+                roles,
+                user.isEnabled(),
+                user.isApprovedSeller(),
+                user.getCreatedAt(),
+                user.getModifiedAt(),
+                user.getStreet(),
+                user.getCity(),
+                user.getState(),
+                user.getZipcode(),
+                user.getCardName(),
+                user.getCardType(),
+                user.getCardNumber(),
+                user.getCardCVV()
+        );
+    }
+
+    @Transactional
+    @Override
+    public void updateUser(ApproveDto approveDto) {
+        User user = userRepository.findById(approveDto.getId()).orElse(null);
+        user.setApprovedSeller(approveDto.isApprove());
     }
 }
