@@ -33,10 +33,10 @@ public class Product implements Serializable {
 
     private long userId;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "product_id")
-    @Fetch(FetchMode.SUBSELECT)
-    private List<Review> reviews;
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JoinColumn(name = "product_id")
+//    @Fetch(FetchMode.SUBSELECT)
+//    private List<Review> reviews;
 
 
     public Product() {

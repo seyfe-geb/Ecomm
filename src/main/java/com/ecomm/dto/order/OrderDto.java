@@ -2,6 +2,7 @@ package com.ecomm.dto.order;
 
 public class OrderDto {
 
+    private long id;
     private double price;
 
     private int quantity;
@@ -13,7 +14,8 @@ public class OrderDto {
     public OrderDto() {
     }
 
-    public OrderDto(double price, int quantity, long productId, long userId) {
+    public OrderDto(long id, double price, int quantity, long productId, long userId) {
+        this.id = id;
         this.price = price;
         this.quantity = quantity;
         this.productId = productId;
@@ -50,5 +52,13 @@ public class OrderDto {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

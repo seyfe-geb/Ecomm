@@ -1,6 +1,7 @@
 package com.ecomm.controllers;
 
 import com.ecomm.dto.order.OrderDto;
+import com.ecomm.dto.order.OrderProductDto;
 import com.ecomm.dto.product.ProductDto;
 import com.ecomm.dto.review.ReviewDto;
 import com.ecomm.dto.user.ApproveDto;
@@ -71,6 +72,12 @@ public class MainController {
     @PreAuthorize("hasRole('BUYER')")
     public ResponseEntity<?> newReview(@RequestBody ReviewDto reviewDto){
         return null;
+    }
+
+    @GetMapping("/buyer/orders/{id}")
+    @PreAuthorize("hasRole('BUYER')")
+    public List<OrderDto> getBuyerOrders(@PathVariable("id")Long id){
+        return orderService.findOrderByUserId(id);
     }
 
 
@@ -160,5 +167,12 @@ public class MainController {
     public ResponseEntity<?> updateUser(@RequestBody ApproveDto approveDto){
         userService.updateUser(approveDto);
         return null;
+    }
+
+    @GetMapping("/orderproductdetail/{id}")
+    @PreAuthorize("hasRole('BUYER')")
+    public OrderProductDto getOrderDetailByOrderId(@PathVariable("id")Long id){
+
+        return orderService.getOrderDetailByOrderId(id);
     }
 }

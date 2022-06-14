@@ -1,6 +1,7 @@
 package com.ecomm.services;
 
 import com.ecomm.dto.order.OrderDto;
+import com.ecomm.dto.order.OrderProductDto;
 import com.ecomm.dto.product.ProductDto;
 import com.ecomm.models.Order;
 import com.ecomm.models.Product;
@@ -29,10 +30,11 @@ public class OrderServiceImpl implements OrderService {
         List<Order> orders = orderRepository.findOrderByUserId(userId);
         List<OrderDto> orderDtos = new ArrayList<>();
         for(Order order :orders){
-            orderDtos.add(new OrderDto(order.getPrice(),order.getQuantity(),
+            orderDtos.add(new OrderDto(order.getId(), order.getPrice(),order.getQuantity(),
                     order.getProductId(), order.getUserId()
                     ));
         }
+        System.out.println(orderDtos.get(0).getPrice());
         return orderDtos;
     }
 
@@ -58,11 +60,29 @@ public class OrderServiceImpl implements OrderService {
         List<Order> orders = orderRepository.findOrderByProductId(pid);
         List<OrderDto> orderDtos = new ArrayList<>();
         for(Order order :orders){
-            orderDtos.add(new OrderDto(order.getPrice(),order.getQuantity(),
+            orderDtos.add(new OrderDto(order.getId(), order.getPrice(),order.getQuantity(),
                     order.getProductId(), order.getUserId()
             ));
         }
         return orderDtos;
+    }
+
+    @Override
+    public OrderDto getOrderById(Long id) {
+        Order order = orderRepository.findById(id).orElse(null);
+        OrderDto orderDto = new OrderDto(order.getId(), order.getPrice(),order.getQuantity(),
+                order.getProductId(), order.getUserId());
+        return orderDto;
+    }
+
+    @Override
+    public OrderProductDto getOrderDetailByOrderId(Long id) {
+        Order order = orderRepository.findById(id).orElse(null);
+        Product product = productRepository.findById(order.getProductId()).orElse(null);
+        OrderProductDto orderProductDto = new OrderProductDto(order.getId(),product.getProductName(),
+                                                order.getPrice(), order.getQuantity(), product.getProductImage(),
+                                                order.getProductId(), order.getUserId());
+        return orderProductDto;
     }
 
     @Override
