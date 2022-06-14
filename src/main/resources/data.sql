@@ -21,7 +21,7 @@ INSERT INTO user_roles (user_id, role_id) VALUES (1, 1);
 INSERT INTO users (approved_seller, cardcvv, card_name, card_number, card_type, city,
                    created_at, email, enabled, first_name, last_name, modified_at, password,
                    state, street, username, zipcode)
-VALUES (false, '155', 'MASTERCARD', '5642389', 'DEBIT', 'NewYork', '2022-06-05', 'seller@ecomm.net', true, 'Seller', 'Ecomm', '2022-06-05', '$2a$12$IKEQb00u5QpZMx4v5zMweu.3wrq0pS7XLCHO4yHZ.BW/yvWu1feo2',
+VALUES (true, '155', 'MASTERCARD', '5642389', 'DEBIT', 'NewYork', '2022-06-05', 'seller@ecomm.net', true, 'Seller', 'Ecomm', '2022-06-05', '$2a$12$IKEQb00u5QpZMx4v5zMweu.3wrq0pS7XLCHO4yHZ.BW/yvWu1feo2',
         'NY', 'def456', 'seller', '789456');
 
 INSERT INTO user_roles (user_id, role_id) VALUES (2, 2);

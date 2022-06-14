@@ -8,4 +8,6 @@ public interface UserService {
     List<UserDto> getAllSellers();
 
     List<UserDto> getAllBuyers();
+
+    List<UserDto> getUnapprovedSellers();
 }
