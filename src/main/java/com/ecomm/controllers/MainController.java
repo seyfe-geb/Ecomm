@@ -6,6 +6,7 @@ import com.ecomm.dto.product.ProductDto;
 import com.ecomm.dto.review.ReviewDto;
 import com.ecomm.dto.user.ApproveDto;
 import com.ecomm.dto.user.UserDto;
+import com.ecomm.models.Order;
 import com.ecomm.repository.UserRepository;
 import com.ecomm.services.MainService;
 import com.ecomm.services.OrderService;
@@ -172,7 +173,12 @@ public class MainController {
     @GetMapping("/orderproductdetail/{id}")
     @PreAuthorize("hasRole('BUYER')")
     public OrderProductDto getOrderDetailByOrderId(@PathVariable("id")Long id){
-
         return orderService.getOrderDetailByOrderId(id);
     }
+    @DeleteMapping("orders/{id}")
+    @PreAuthorize("hasRole('BUYER')")
+    public void deletOrderById(@PathVariable("id") long id){
+        orderService.deleteOrderById(id);
+    }
+
 }
