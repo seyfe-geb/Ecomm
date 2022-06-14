@@ -34,7 +34,6 @@ public class OrderServiceImpl implements OrderService {
                     order.getProductId(), order.getUserId()
                     ));
         }
-        System.out.println(orderDtos.get(0).getPrice());
         return orderDtos;
     }
 
@@ -77,12 +76,15 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderProductDto getOrderDetailByOrderId(Long id) {
+        OrderProductDto result = new OrderProductDto();
         Order order = orderRepository.findById(id).orElse(null);
-        Product product = productRepository.findById(order.getProductId()).orElse(null);
-        OrderProductDto orderProductDto = new OrderProductDto(order.getId(),product.getProductName(),
-                                                order.getPrice(), order.getQuantity(), product.getProductImage(),
-                                                order.getProductId(), order.getUserId());
-        return orderProductDto;
+        if(order != null){
+            Product product = productRepository.findById(order.getProductId()).orElse(null);
+            result = new OrderProductDto(order.getId(),product.getProductName(),
+                    order.getPrice(), order.getQuantity(), product.getProductImage(),
+                    order.getProductId(), order.getUserId());
+        }
+        return result;
     }
 
     @Override
