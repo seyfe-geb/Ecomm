@@ -15,4 +15,6 @@ public interface UserService {
     UserDto getUserById(Long id);
 
     void updateUser(ApproveDto approveDto);
+
+    List<UserDto> getApprovedSellers();
 }

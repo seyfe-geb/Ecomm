@@ -171,4 +171,43 @@ public class UserServiceImpl implements UserService{
         User user = userRepository.findById(approveDto.getId()).orElse(null);
         user.setApprovedSeller(approveDto.isApprove());
     }
+
+    @Override
+    public List<UserDto> getApprovedSellers() {
+        List<User> sellers = userRepository.findByApprovedSeller(true);
+        sellers = sellers.stream()
+                .filter(s -> {
+                    List<String> roles = s.getRoles().stream().map(r -> r.getName().toString()).collect(Collectors.toList());
+                    return roles.contains("ROLE_SELLER");
+                })
+                .collect(Collectors.toList());
+
+        List<UserDto> returnSellers = new ArrayList<>();
+        for(User user : sellers){
+            List<String> roles = user.getRoles().stream()
+                    .map(r -> r.getName().toString())
+                    .collect(Collectors.toList());
+            returnSellers.add(new UserDto(
+                    user.getId(),
+                    user.getFirstName(),
+                    user.getLastName(),
+                    user.getUsername(),
+                    user.getEmail(),
+                    roles,
+                    user.isEnabled(),
+                    user.isApprovedSeller(),
+                    user.getCreatedAt(),
+                    user.getModifiedAt(),
+                    user.getStreet(),
+                    user.getCity(),
+                    user.getState(),
+                    user.getZipcode(),
+                    user.getCardName(),
+                    user.getCardType(),
+                    user.getCardNumber(),
+                    user.getCardCVV()
+            ));
+        }
+        return returnSellers;
+    }
 }

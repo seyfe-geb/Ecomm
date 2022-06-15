@@ -53,6 +53,12 @@ public class UserController {
         return userService.getUnapprovedSellers();
     }
 
+    @GetMapping("/sellers/approved")
+    @PreAuthorize("hasRole('ADMIN')")
+    public List<UserDto> getApprovedSellers(){
+        return userService.getApprovedSellers();
+    }
+
     @GetMapping("/buyers")
     @PreAuthorize("hasRole('ADMIN')")
     public List<UserDto> getAllBuyers(){
