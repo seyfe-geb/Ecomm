@@ -21,16 +21,19 @@ public class ProductController {
     public List<ProductDto> getAllProducts() {
         return productService.getAllProducts();
     }
+
     @GetMapping("/{pid}")
     public ProductDto getProductById(@PathVariable("pid")Long pid) {
         return productService.getProductById(pid);
     }
+
     @PostMapping("/addproduct")
     @PreAuthorize("hasRole('SELLER')")
     public ResponseEntity<?> addProduct(@RequestBody ProductDto productDto){
         productService.saveProduct(productDto);
         return null;
     }
+
     @GetMapping("/seller/{id}")
     @PreAuthorize("hasRole('SELLER')")
     public List<ProductDto> getProductsBySellerId(@PathVariable("id") long id) {

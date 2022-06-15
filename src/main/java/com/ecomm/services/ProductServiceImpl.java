@@ -18,18 +18,6 @@ public class ProductServiceImpl implements ProductService{
     @Autowired
     private ProductRepository productRepository;
 
-    @Override
-    public List<Product> getAllProduct() {
-
-//        return productRepository.getAllProduct();
-        return null;
-    }
-
-    @Override
-    public Optional<Product> findProductById(long productId) {
-//        return productRepository.findByProductById(productId);
-        return null;
-    }
 
     @Override
     public void saveProduct(ProductDto productDto) {
@@ -40,6 +28,7 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public void deleteProductById(long productId) {
+
         productRepository.deleteById(productId);
     }
 
