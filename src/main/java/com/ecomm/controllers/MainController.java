@@ -112,6 +112,7 @@ public class MainController {
     @PostMapping("/seller/orders")
     @PreAuthorize("hasRole('SELLER')")
     public ResponseEntity<?> getAllOrders(){
+//        orderService.getOrdersBySellerId(id)
         return null;
     }
 
@@ -171,14 +172,21 @@ public class MainController {
     }
 
     @GetMapping("/orderproductdetail/{id}")
-    @PreAuthorize("hasRole('BUYER')")
+    @PreAuthorize("hasRole('BUYER') or hasRole('SELLER')")
     public OrderProductDto getOrderDetailByOrderId(@PathVariable("id")Long id){
         return orderService.getOrderDetailByOrderId(id);
     }
     @DeleteMapping("orders/{id}")
-    @PreAuthorize("hasRole('BUYER')")
-    public void deletOrderById(@PathVariable("id") long id){
+    @PreAuthorize("hasRole('BUYER') or hasRole('SELLER')")
+    public void deleteOrderById(@PathVariable("id") long id){
         orderService.deleteOrderById(id);
+    }
+
+    @DeleteMapping("products/{id}")
+    @PreAuthorize("hasRole('SELLER')")
+    public void deleteProductById(@PathVariable("id") long id){
+
+        productService.deleteProductById(id);
     }
 
 }
