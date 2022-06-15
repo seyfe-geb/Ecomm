@@ -49,9 +49,14 @@ public class OrderServiceImpl implements OrderService {
 
         List<OrderDto> orders = new ArrayList<>();
         for (ProductDto p: productDtos){
-            List<Order> orders1 = orderRepository.findOrderByProductId(sid);
+            List<Order> orders1 = orderRepository.findOrderByProductId(p.getId());
+            for(Order order :orders1){
+                orders.add(new OrderDto(order.getId(), order.getPrice(),order.getQuantity(),
+                        order.getProductId(), order.getUserId()
+                ));
+            }
         }
-        return null;
+        return orders;
     }
 
     @Override
@@ -87,6 +92,7 @@ public class OrderServiceImpl implements OrderService {
         return result;
     }
 
+
     @Override
     public List<Order> getAllOrder() {
         return orderRepository.findAll();
@@ -108,6 +114,8 @@ public class OrderServiceImpl implements OrderService {
 
         orderRepository.deleteById(orderId);
     }
+
+
 
 
 }

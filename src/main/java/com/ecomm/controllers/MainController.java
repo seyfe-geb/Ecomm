@@ -106,7 +106,7 @@ public class MainController {
     @GetMapping("/seller/orders/{id}")
     @PreAuthorize("hasRole('SELLER')")
     public List<OrderDto> getOrderedItemsFromSellerBySellerId(@PathVariable("id") long id) {
-        return orderService.findOrderByUserId(id);
+        return orderService.getOrdersBySellerId(id);
     }
 
     @PostMapping("/seller/orders")
