@@ -30,6 +30,12 @@ public class UserController {
         return "Seller Board.";
     }
 
+    @GetMapping("/buyer")
+    @PreAuthorize("hasRole('BUYER')")
+    public String buyerAccess() {
+        return "Buyer Board.";
+    }
+
     @GetMapping("/all")
     public String allAccess() {
         return "Public Content.";
